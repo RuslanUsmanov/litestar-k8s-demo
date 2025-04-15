@@ -1,5 +1,5 @@
 litestar:
-  image: fastapi-app:latest
+  image: justaway86/litestar_demo:0.1.0
   port: 8000
   replicas: 1
 
