@@ -1,0 +1,22 @@
+replicaCount: 1
+
+image:
+  repository: fastapi-app
+  tag: 0.1.0
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: true
+  className: ""
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  hosts:
+    - host: litestar.com
+      paths:
+        - path: /
+          pathType: Prefix
+  tls: []
