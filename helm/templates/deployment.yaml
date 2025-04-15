@@ -1,20 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "litestar.fullname" . }}
+  name: litestar-deployment
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: {{ .Values.litestar.replicas }}
   selector:
     matchLabels:
-      app: {{ include "litestar.name" . }}
+      app: litestar
   template:
     metadata:
       labels:
-        app: {{ include "litestar.name" . }}
+        app: litestar
     spec:
       containers:
-        - name: {{ .Chart.Name }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
-          ports:
-            - containerPort: 8000
+      - name: litestar
+        image: {{ .Values.litestar.image }}
+        ports:
+        - containerPort: {{ .Values.litestar.port }}

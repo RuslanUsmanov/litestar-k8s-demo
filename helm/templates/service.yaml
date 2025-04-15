@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "litestar.fullname" . }}
+  name: litestar-service
 spec:
-  type: {{ .Values.service.type }}
   selector:
-    app: {{ include "litestar.name" . }}
+    app: litestar
   ports:
-    - port: {{ .Values.service.port }}
-      targetPort: 8000
-      protocol: TCP
+    - protocol: TCP
+      port: 80
+      targetPort: {{ .Values.litestar.port }}
+  type: ClusterIP
