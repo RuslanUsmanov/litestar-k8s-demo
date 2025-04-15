@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: litestar-service
+spec:
+  selector:
+    app: litestar
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8000
+  type: ClusterIP

@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: litestar-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: litestar
+  template:
+    metadata:
+      labels:
+        app: litestar
+    spec:
+      containers:
+      - name: litestar
+        image: justaway86/litestar_demo:0.1.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8000
